@@ -12,5 +12,5 @@ init() {
 init brew
 init zsh
 init launch-agent
-init rust
+init languages
 init etc
