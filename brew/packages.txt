@@ -14,5 +14,6 @@ zsh
 # ==========
 
 --cask keka
+--cask kekaexternalhelper
 --cask rectangle
 --cask alacritty
