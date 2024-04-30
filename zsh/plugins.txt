@@ -1,0 +1,4 @@
+fzf
+zoxide
+zsh-autosuggestions
+zsh-syntax-highlighting

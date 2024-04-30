@@ -1,0 +1,17 @@
+# =============
+# == Formula ==
+# =============
+
+fzf
+git
+ripgrep
+tldr
+zoxide
+zsh
+
+# ==========
+# == Cask ==
+# ==========
+
+--cask keka
+--cask rectangle
