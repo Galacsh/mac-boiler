@@ -7,15 +7,17 @@ zshrc_file=$1
 
 # ======================================
 
-info 'Removing preconfigured aliases...'
+info 'Editing aliases...'
 
-sed -E -i '' '/^alias.*/d' "${zshrc_file}"
+sed -E '/^alias.*/d' "${zshrc_file}" | awk '{
+  print $0
 
-# ======================================
+  if ($0 ~ /^# alias ohmyzsh/) {
+    print "alias nv=\"nvim\""
+    print "alias cd=\"z\""
+  }
+}' > "${zshrc_file}.tmp"
 
-info 'Adding some aliases...'
+mv "${zshrc_file}.tmp" "${zshrc_file}"
 
-cat << EOF >> "${zshrc_file}"
-alias nv="nvim"
-alias cd="z"
-EOF
+info 'Done'
