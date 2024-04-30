@@ -11,7 +11,7 @@ init() {
 
 init brew
 init zsh
-# init launch-agent
+init launch-agent
 # init rust
 # init alacritty
 # init etc
