@@ -34,3 +34,7 @@ zshrc_file=${HOME}/.zshrc
 # ======================================
 
 ./update-theme.sh "${zshrc_file}"
+
+# ======================================
+
+./set-aliases.sh "${zshrc_file}"
