@@ -2,9 +2,13 @@
 # == Formula ==
 # =============
 
+cmake
+curl
 fzf
+gettext
 git
 jq
+ninja
 ripgrep
 tldr
 zoxide
@@ -17,4 +21,3 @@ zsh
 --cask keka
 --cask kekaexternalhelper
 --cask rectangle
---cask alacritty

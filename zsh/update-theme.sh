@@ -17,6 +17,7 @@ sed -E -i '' "s/^ZSH_THEME=.*/ZSH_THEME=\"${theme}\"/" "${zshrc_file}"
 
 info 'Now, go and edit agnoster theme.'
 
+# shellcheck disable=SC2016
 echo '
   prompt_context() {
     - if [[ "$user" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then

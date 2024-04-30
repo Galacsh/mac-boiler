@@ -5,6 +5,14 @@ source ../utils.sh
 
 # =================================================
 
+info 'Setting up /usr/local/src...'
+
+if [[ ! -d /usr/local/src ]]; then
+  sudo mkdir -p /usr/local/src
+fi
+
+# =================================================
+
 info 'Setting up /usr/local/bin...'
 
 if [[ ! -d /usr/local/bin ]]; then

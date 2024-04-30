@@ -40,3 +40,12 @@ uppercase() {
 valid_lines_of() {
   awk '{ if (NF > 0 && $1 !~ /^#/) { print $0 } }' $1
 }
+
+trim() {
+    local var="$*"
+    # remove leading whitespace characters
+    var="${var#"${var%%[![:space:]]*}"}"
+    # remove trailing whitespace characters
+    var="${var%"${var##*[![:space:]]}"}"
+    printf '%s' "$var"
+}

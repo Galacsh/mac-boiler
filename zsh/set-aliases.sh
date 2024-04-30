@@ -17,4 +17,5 @@ info 'Adding some aliases...'
 
 cat << EOF >> "${zshrc_file}"
 alias nv="nvim"
+alias cd="z"
 EOF

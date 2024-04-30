@@ -7,10 +7,12 @@ source ../utils.sh
 
 info 'Enabling IntelliJ IDEA CLI...'
 
-cat << EOF | sudo tee /usr/local/bin/idea > /dev/null
-#!/bin/sh
+sudo su << EOF
+cat << BOF > /usr/local/bin/idea
+#!/usr/bin/env bash
 
 open -na "IntelliJ IDEA.app" --args "$@"
+BOF
 EOF
 
 sudo chmod +x /usr/local/bin/idea

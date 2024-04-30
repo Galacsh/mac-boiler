@@ -5,8 +5,16 @@ source ../utils.sh
 
 # =========================================
 
-./defaults-write.sh
+./usr-local.sh
 
 # =========================================
 
-./git-config.sh
+./manual-download.sh || exit 0
+
+# =========================================
+
+./intellij-cli.sh
+
+# =========================================
+
+./install-with-git.sh
