@@ -33,3 +33,7 @@ zshrc_file=${HOME}/.zshrc
 # ======================================
 
 ./set-aliases.sh "${zshrc_file}"
+
+# ======================================
+
+./set-variables.sh "${zshrc_file}"
