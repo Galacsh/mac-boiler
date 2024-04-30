@@ -16,14 +16,17 @@ go_pkg_link() {
     awk '{ print "https://go.dev"$0 }'
 }
 
+download() {
+  curl --output-dir ~/Downloads --output "$1" --progress-bar -L "$2"
+  echo ~/Downloads/"$1"
+}
+
 install_go() {
   pkg_link=$(go_pkg_link)
-  output_file=~/Downloads/go.pkg
 
   if [[ "${pkg_link}" =~ \.pkg$ ]]; then
     info 'Found download link.'
-    curl --output-dir ~/Downloads --output 'go.pkg' --progress-bar -L "${pkg_link}"
-    open "${output_file}"
+    download 'go.pkg' "${pkg_link}" | xargs open
   else
     open "${download_link}"
     err 'Cannot find download link. Install manually.'
