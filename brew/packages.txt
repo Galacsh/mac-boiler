@@ -4,6 +4,7 @@
 
 fzf
 git
+jq
 ripgrep
 tldr
 zoxide
