@@ -36,7 +36,6 @@ else
   open "${downloaded}"
 fi
 
-# Discord, Slack
 # ==================================
 
 info "Downloading 'Discord'..."
