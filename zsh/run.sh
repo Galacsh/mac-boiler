@@ -7,11 +7,6 @@ zshrc_file=${HOME}/.zshrc
 
 # ======================================
 
-# Check if it's Darwin.
-./is-darwin.sh
-
-# ======================================
-
 # Install 'oh-my-zsh'.
 ./install-omz.sh || exit 0
 
