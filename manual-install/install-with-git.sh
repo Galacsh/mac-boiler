@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" || exit
+cd -- "$(dirname -- "${BASH_SOURCE[0]}")" || exit
 source ../utils.sh
 
 # ==================================
@@ -29,7 +29,7 @@ after_neovim_installation() {
 info "Installing 'Neovim'..."
 
 if no_cmd 'nvim'; then
-sudo su << EOF
+  sudo su <<EOF
   cd /usr/local/src || exit
   git clone --depth 1 https://github.com/neovim/neovim
   cd neovim && make CMAKE_BUILD_TYPE=RelWithDebInfo
@@ -47,7 +47,7 @@ info "Done."
 info "Installing 'Alacritty'..."
 
 if [[ ! -d /Applications/Alacritty.app ]]; then
-sudo su << EOF
+  sudo su <<EOF
   cd /usr/local/src || exit
   git clone --depth 1 https://github.com/alacritty/alacritty.git
   cd alacritty || exit

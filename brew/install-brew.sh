@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" || exit
+cd -- "$(dirname -- "${BASH_SOURCE[0]}")" || exit
 source ../utils.sh
 
 if no_cmd 'brew'; then

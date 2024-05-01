@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" || exit
+cd -- "$(dirname -- "${BASH_SOURCE[0]}")" || exit
 source ../utils.sh
 
 # =========================================
@@ -29,7 +29,7 @@ install_go() {
     download 'go.pkg' "${pkg_link}" | xargs open
   else
     open "${download_link}"
-    err 'Cannot find download link. Install manually.'
+    error 'Cannot find download link. Install manually.'
   fi
 }
 

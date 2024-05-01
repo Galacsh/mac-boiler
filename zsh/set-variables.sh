@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" || exit
+cd -- "$(dirname -- "${BASH_SOURCE[0]}")" || exit
 source ../utils.sh
 
 zshrc_file=$1
@@ -20,6 +20,6 @@ awk '{
     print "ZSH_DISABLE_COMPFIX=true"
   }
   print $0
-}' "${zshrc_file}" > "${zshrc_file}.tmp"
+}' "${zshrc_file}" >"${zshrc_file}.tmp"
 
 mv "${zshrc_file}.tmp" "${zshrc_file}"

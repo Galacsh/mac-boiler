@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" || exit
+cd -- "$(dirname -- "${BASH_SOURCE[0]}")" || exit
 source ../utils.sh
 
 zshrc_file=$1
@@ -16,7 +16,7 @@ sed -E '/^alias.*/d' "${zshrc_file}" | awk '{
     print "alias nv=\"nvim\""
     print "alias cd=\"z\""
   }
-}' > "${zshrc_file}.tmp"
+}' >"${zshrc_file}.tmp"
 
 mv "${zshrc_file}.tmp" "${zshrc_file}"
 

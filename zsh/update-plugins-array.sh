@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" || exit
+cd -- "$(dirname -- "${BASH_SOURCE[0]}")" || exit
 source ../utils.sh
 
 info "Updating 'plugins' array..."
@@ -21,7 +21,7 @@ done < <(valid_lines_of plugins.txt)
 
 plugins="plugins=\( "
 for plugin in "${zsh_plugins[@]}"; do
-    plugins+="$plugin "
+  plugins+="$plugin "
 done
 plugins+="\)"
 

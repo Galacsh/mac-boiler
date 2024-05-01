@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" || exit
+cd -- "$(dirname -- "${BASH_SOURCE[0]}")" || exit
 source ../utils.sh
 
 # ===================================
@@ -28,7 +28,7 @@ plist_basename="${plist_name}.plist"
 plist_path="${HOME}/Library/LaunchAgents/${plist_basename}"
 
 touch "${plist_path}"
-cat << EOF > "${plist_path}"
+cat <<EOF >"${plist_path}"
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
