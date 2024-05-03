@@ -1,23 +1,19 @@
-# =============
-# == Formula ==
-# =============
+# IFS='|'
+# $1: option - formula or cask
+# $2: package name
 
-cmake
-curl
-fzf
-gettext
-git
-jq
-ninja
-ripgrep
-tldr
-zoxide
-zsh
+formula | cmake
+formula | curl
+formula | fzf
+formula | gettext
+formula | git
+formula | jq
+formula | ninja
+formula | ripgrep
+formula | tldr
+formula | zoxide
+formula | zsh
 
-# ==========
-# == Cask ==
-# ==========
-
---cask keka
---cask kekaexternalhelper
---cask rectangle
+cask | keka
+cask | kekaexternalhelper
+cask | rectangle

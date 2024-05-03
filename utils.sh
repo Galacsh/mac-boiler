@@ -1,39 +1,13 @@
-# Generalized function for color output
-pretty_print() {
-  local color_code="$1"
-  shift
-  printf "\e[${color_code}m%s\e[0m\n" "$*"
-}
+#!/usr/bin/env bash
 
-# Using color_print in specific color functions
-green() {
-  pretty_print 32 "$@"
-}
+verbose_mode=${verbose_mode:-false}
 
-red() {
-  pretty_print 31 "$@"
-}
-
-yellow() {
-  pretty_print 33 "$@"
-}
-
-bold() {
-  pretty_print 1 "$@"
-}
-
-info() {
-  prefix="$(bold "$(green '[INFO]')")"
-  printf "%s %s\n" "${prefix}" "$*"
-}
-
-error() {
-  prefix="$(bold "$(red '[ERROR]')")"
-  printf "%s %s\n" "${prefix}" "$*" >&2
-}
-
-highlight() {
-  yellow "$*"
+show_if_verbose() {
+  if ${verbose_mode}; then
+    cat
+  else
+    cat >/dev/null
+  fi
 }
 
 has_cmd() {
@@ -69,27 +43,37 @@ is_not_empty() {
 }
 
 contains() {
+  local compare_this
+  if [[ $# -gt 1 ]]; then
+    compare_this=$1
+    shift
+  else
+    compare_this=$(</dev/stdin)
+  fi
+
   local patterns=()
 
   for expr in "$@"; do
     patterns+=("-e" "$expr")
   done
 
-  grep -q "${patterns[@]}"
-}
-
-contains_v() {
-  compare_this="$1"
-  shift
-  echo "${compare_this}" | contains "$@"
+  echo "$compare_this" | grep -q "${patterns[@]}"
 }
 
 uppercase() {
-  tr '[:lower:]' '[:upper:]'
+  if (($#)); then
+    echo "$@" | tr '[:lower:]' '[:upper:]'
+  else
+    tr '[:lower:]' '[:upper:]'
+  fi
 }
 
-uppercase_v() {
-  echo "$*" | uppercase
+lowercase() {
+  if (($#)); then
+    echo "$@" | tr '[:upper:]' '[:lower:]'
+  else
+    tr '[:upper:]' '[:lower:]'
+  fi
 }
 
 valid_lines_of() {
@@ -101,7 +85,12 @@ valid_lines_of() {
 }
 
 trim() {
-  var=$(</dev/stdin)
+  local var
+  if (($#)); then
+    var="$*"
+  else
+    var=$(</dev/stdin)
+  fi
 
   # remove leading whitespace characters
   var="${var#"${var%%[![:space:]]*}"}"
@@ -109,9 +98,106 @@ trim() {
   # remove trailing whitespace characters
   var="${var%"${var##*[![:space:]]}"}"
 
-  printf '%s\n' "$var"
+  printf "%s" "${var}"
 }
 
-trim_v() {
-  echo "$*" | trim
+pretty_print() {
+  local -r code="$1" && shift
+  if (($#)); then
+    printf "\e[${code}m%s\e[0m\n" "$@"
+  else
+    printf "\e[${code}m%s\e[0m\n" "$(</dev/stdin)"
+  fi
 }
+
+# shellcheck disable=SC2120
+green() {
+  pretty_print 32 "$@"
+}
+
+# shellcheck disable=SC2120
+red() {
+  pretty_print 31 "$@"
+}
+
+# shellcheck disable=SC2120
+yellow() {
+  pretty_print 33 "$@"
+}
+
+# shellcheck disable=SC2120
+bold() {
+  pretty_print 1 "$@"
+}
+
+# TODO: stdin, args 지원
+# shellcheck disable=SC2120
+info() {
+  if (($#)); then
+    printf '%s' '[INFO]' | bold | green |
+      xargs -I @ printf '%s %s\n' @ "$@"
+  else
+    printf '%s' '[INFO]' | bold | green |
+      xargs -I @ printf '%s %s\n' @ "$(</dev/stdin)"
+  fi
+}
+
+# shellcheck disable=SC2120
+error() {
+  if (($#)); then
+    printf '%s' '[ERROR]' | bold | red |
+      xargs -I @ printf '%s %s\n' @ "$@" >&2
+  else
+    printf '%s' '[ERROR]' | bold | red |
+      xargs -I @ printf '%s %s\n' @ "$(</dev/stdin)" >&2
+  fi
+}
+
+# shellcheck disable=SC2145
+highlight() {
+  if (($#)); then
+    echo "👉 $@" | yellow
+  else
+    echo "👉 $(</dev/stdin)" | yellow
+  fi
+}
+
+log() {
+  if ${verbose_mode}; then
+    if (($#)); then
+      echo "$@"
+    else
+      echo "$(</dev/stdin)"
+    fi
+  else
+    if (($#)); then
+      echo "$@" >/dev/null
+    else
+      echo "$(</dev/stdin)" >/dev/null
+    fi
+  fi
+}
+
+export -f show_if_verbose
+export -f has_cmd
+export -f no_cmd
+export -f exists
+export -f not_exists
+export -f has_app
+export -f no_app
+export -f is_empty
+export -f is_not_empty
+export -f contains
+export -f uppercase
+export -f lowercase
+export -f valid_lines_of
+export -f trim
+export -f pretty_print
+export -f green
+export -f red
+export -f yellow
+export -f bold
+export -f info
+export -f error
+export -f highlight
+export -f log

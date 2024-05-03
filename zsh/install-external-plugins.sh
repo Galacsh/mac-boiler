@@ -1,24 +1,28 @@
 #!/usr/bin/env bash
 
 cd -- "$(dirname -- "${BASH_SOURCE[0]}")" || exit
+
+source ../strict-mode.sh
 source ../utils.sh
 
-info "Installing external zsh plugins..."
+# ===============================================
 
-plugins_dir=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins
+plugins_dir=${ZSH_CUSTOM:-${HOME}/.oh-my-zsh/custom}/plugins
+syntax_highlighting_dir=${plugins_dir}/zsh-syntax-highlighting
+autosuggestions_dir=${plugins_dir}/zsh-autosuggestions
+
+# ===============================================
 
 # zsh-syntax-highlighting
-plugin_dir=${plugins_dir}/zsh-syntax-highlighting
-if [[ ! -d ${plugin_dir} ]]; then
-  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "${plugin_dir}"
+if not_exists "${syntax_highlighting_dir}"; then
+  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "${syntax_highlighting_dir}"
 else
-  echo "'zsh-syntax-highlighting' already installed."
+  log "'zsh-syntax-highlighting' already installed."
 fi
 
 # zsh-autosuggestions
-plugin_dir=${plugins_dir}/zsh-autosuggestions
-if [[ ! -d ${plugin_dir} ]]; then
-  git clone https://github.com/zsh-users/zsh-autosuggestions "${plugin_dir}"
+if not_exists "${autosuggestions_dir}"; then
+  git clone https://github.com/zsh-users/zsh-autosuggestions "${autosuggestions_dir}"
 else
-  echo "'zsh-autosuggestions' already installed."
+  log "'zsh-autosuggestions' already installed."
 fi

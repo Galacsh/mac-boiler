@@ -1,47 +1,53 @@
 #!/usr/bin/env bash
 
 cd -- "$(dirname -- "${BASH_SOURCE[0]}")" || exit
+
+source ../strict-mode.sh
 source ../utils.sh
 
-# =========================================
+# ================================================
 
-download_link='https://go.dev/dl/'
+go_link='https://go.dev'
+download_link="${go_link}/dl/"
 arch='Apple macOS (ARM64)'
+downloads_dir=${HOME}/Downloads
+
+# ================================================
 
 go_pkg_link() {
   curl -sL "${download_link}" |
     grep "${arch}" -B 2 |
     grep -o '<a .*href=.*>' |
     sed -e 's/<a .*href=['"'"'"]//' -e 's/["'"'"'].*$//' -e '/^$/ d' |
-    awk '{ print "https://go.dev"$0 }'
+    awk "{ print \"${go_link}\"$0 }"
 }
 
 download() {
-  curl --output-dir ~/Downloads --output "$1" --progress-bar -L "$2"
+  curl --output-dir "${downloads_dir}" --output "$1" --progress-bar -L "$2"
   echo ~/Downloads/"$1"
 }
 
 install_go() {
   pkg_link=$(go_pkg_link)
 
-  if [[ "${pkg_link}" =~ \.pkg$ ]]; then
-    info 'Found download link.'
-    download 'go.pkg' "${pkg_link}" | xargs open
-  else
+  if [[ ! "${pkg_link}" =~ \.pkg$ ]]; then
     open "${download_link}"
     error 'Cannot find download link. Install manually.'
+    exit 1
   fi
+
+  log 'Found download link.'
+  download 'go.pkg' "${pkg_link}" | xargs open
 }
 
 # =========================================
 
-info "Installing 'go' things..."
-
-if no_cmd 'go'; then
-  install_go
-  info 'After installation, close and reopen your terminal.'
-  exit 1
-else
-  echo "'go' things are already installed."
-  exit 0
+if has_cmd 'go'; then
+  log "'go' things are already installed."
+  exit
 fi
+
+install_go
+
+highlight 'After installation, close and reopen your terminal.'
+exit 1

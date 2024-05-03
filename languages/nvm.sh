@@ -1,27 +1,30 @@
 #!/usr/bin/env bash
 
 cd -- "$(dirname -- "${BASH_SOURCE[0]}")" || exit
+
+source ../strict-mode.sh
 source ../utils.sh
 
-# =========================================
+# ================================================
 
-after_installation() {
-  echo 'e.g.
+nvm_dir=${HOME}/.nvm
+nvm_version='v0.39.7'
+
+# ================================================
+
+if exists "${nvm_dir}"; then
+  log "'nvm' is already installed."
+  exit
+fi
+
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/${nvm_version}/install.sh | bash
+
+highlight <<EOF
+Close and reopen your terminal.
+Then, install any version you want.
+
+e.g.
   nvm install --lts
   nvm use --lts
-  '
-}
-
-# =========================================
-
-info "Installing 'nvm'..."
-
-if [[ ! -d "${HOME}/.nvm" ]]; then
-  # curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
-  info 'Close and reopen your terminal.'
-  info 'Then, install any version you want.'
-  after_installation
-  exit 1
-else
-  echo "'nvm' is already installed."
-fi
+EOF
+exit 1

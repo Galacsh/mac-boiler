@@ -1,27 +1,25 @@
 #!/usr/bin/env bash
 
 cd -- "$(dirname -- "${BASH_SOURCE[0]}")" || exit
+
+source ../strict-mode.sh
 source ../utils.sh
 
-# =========================================
+# ================================================
 
-after_installation() {
-  echo 'e.g.
+if exists "${HOME}/.sdkman"; then
+  echo "'sdkman' is already installed."
+  exit
+fi
+
+curl -s "https://get.sdkman.io" | bash
+
+highlight <<EOF
+Close and reopen your terminal.
+Then, install any version you want.
+
+e.g.
   sdk list java
   sdk install java x.y.z-amzn
-'
-}
-
-# =========================================
-
-info "Installing 'sdkman'..."
-
-if [[ ! -d "${HOME}/.sdkman" ]]; then
-  curl -s "https://get.sdkman.io" | bash
-  info 'Close and reopen your terminal.'
-  info 'Then, install any version you want.'
-  after_installation
-  exit 1
-else
-  echo "'nvm' is already installed."
-fi
+EOF
+exit 1

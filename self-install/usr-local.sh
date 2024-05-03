@@ -5,16 +5,20 @@ source ../utils.sh
 
 # =================================================
 
-info 'Setting up /usr/local/src...'
+log 'Setting up /usr/local/src...'
 
-if [[ ! -d /usr/local/src ]]; then
+if not_exists /usr/local/src; then
   sudo mkdir -p /usr/local/src
+else
+  log "'/usr/local/src' already exists."
 fi
 
 # =================================================
 
-info 'Setting up /usr/local/bin...'
+log 'Setting up /usr/local/bin...'
 
-if [[ ! -d /usr/local/bin ]]; then
+if not_exists /usr/local/bin; then
   sudo mkdir -p /usr/local/bin
+else
+  log "'/usr/local/bin' already exists."
 fi
