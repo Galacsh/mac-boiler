@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 
 # ==========================
-# Remap Right Command to F18
+# Remap Fn to F17
 # ==========================
 
 hidutil property --set '{
   "UserKeyMapping": [
     {
-      "HIDKeyboardModifierMappingSrc": 0x7000000e7,
-      "HIDKeyboardModifierMappingDst": 0x70000006d
+      "HIDKeyboardModifierMappingSrc": 0xFF00000003,
+      "HIDKeyboardModifierMappingDst": 0x70000006C
     }
   ]
 }'
