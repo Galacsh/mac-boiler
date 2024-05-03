@@ -22,3 +22,9 @@ info 'Done.'
 info "Enabling 'Intellij IDEA CLI'..."
 ./intellij-cli.sh
 info 'Done.'
+
+# =========================
+
+info "Configuring 'SSH'..."
+./ssh-config.sh
+info 'Done.'
