@@ -7,7 +7,7 @@ source ../utils.sh
 
 # ===============================================
 
-if is_not_empty "${ZSH}"; then
+if exists "${HOME}/.oh-my-zsh"; then
   log "'oh-my-zsh' is already installed."
   exit
 fi
