@@ -12,6 +12,10 @@ identity_file=${HOME}/.ssh/identity
 
 # ===============================================
 
+if exists "${identity_file}"; then
+  log "'SSH' things are already configured."
+fi
+
 read -r -p "Comment for the SSH key: " comment
 
 ssh-keygen -t ed25519 -f "${identity_file}" -C "${comment}"
