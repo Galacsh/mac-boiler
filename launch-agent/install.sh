@@ -31,6 +31,7 @@ log "Creating plist file..."
 plist_name="${plist_prefix}.${program_name%.*}"
 plist_basename="${plist_name}.plist"
 plist_path="${HOME}/Library/LaunchAgents/${plist_basename}"
+mkdir -p "${HOME}/Library/LaunchAgents"
 touch "${plist_path}"
 
 # fill in that plist file
