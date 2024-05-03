@@ -14,5 +14,7 @@ fi
 
 log "'brew' is not installed."
 /usr/bin/env bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+# shellcheck disable=SC2016
+(echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> "${HOME}"/.zprofile
 highlight 'Run again with a new session.'
 exit 1
