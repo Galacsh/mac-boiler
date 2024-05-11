@@ -11,6 +11,7 @@ formula | jq
 formula | ninja
 formula | ripgrep
 formula | tldr
+formula | tmux
 formula | zoxide
 formula | zsh
 
