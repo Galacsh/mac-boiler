@@ -68,6 +68,10 @@ uppercase() {
   fi
 }
 
+asdfasdf
+
+asdf
+
 lowercase() {
   if (($#)); then
     echo "$@" | tr '[:upper:]' '[:lower:]'
@@ -130,7 +134,6 @@ bold() {
   pretty_print 1 "$@"
 }
 
-# TODO: stdin, args 지원
 # shellcheck disable=SC2120
 info() {
   if (($#)); then
