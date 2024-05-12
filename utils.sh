@@ -68,10 +68,6 @@ uppercase() {
   fi
 }
 
-asdfasdf
-
-asdf
-
 lowercase() {
   if (($#)); then
     echo "$@" | tr '[:upper:]' '[:lower:]'
