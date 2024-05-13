@@ -1,0 +1,46 @@
+export ZSH="$HOME/.oh-my-zsh"
+
+# =====================================================
+# See: https://github.com/ohmyzsh/ohmyzsh/wiki/Settings
+# =====================================================
+
+ZSH_THEME='agnoster'
+
+# Update automatically without asking.
+zstyle ':omz:update' mode auto
+
+# Display yellow dots whilst waiting for completion.
+COMPLETION_WAITING_DOTS="%F{yellow}...%f"
+
+# Change the command execution time stamp shown in the history command output.
+HIST_STAMPS='yyyy-mm-dd'
+
+# Plugins to load:
+# - Standard plugins can be found in $ZSH/plugins/
+# - Custom plugins may be added to $ZSH_CUSTOM/plugins/
+plugins=(
+  fzf
+  zoxide
+  zsh-autosuggestions
+  zsh-syntax-highlighting
+)
+
+# See: https://github.com/ohmyzsh/ohmyzsh/wiki/Settings#zsh_disable_compfix
+ZSH_DISABLE_COMPFIX=true
+
+source $ZSH/oh-my-zsh.sh
+
+# =====================================================
+
+# Set language environment.
+export LANG=en_US.UTF-8
+
+# Load custom aliases.
+if [[ -e "$HOME"/.aliases ]]; then source "$HOME"/.aliases; fi
+
+# Custom variables.
+export MANPAGER='col -b | nvim -MR -'
+export FZF_DEFAULT_OPTS='--height=40% --reverse --border'
+
+# =====================================================
+

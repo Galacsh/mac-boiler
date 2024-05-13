@@ -15,6 +15,7 @@ info "Installing plugins..."
 ./install-external-plugins.sh
 info 'Done.'
 
-info "Editing '.zshrc' file..."
-./edit-zshrc.sh
+info "Copying 'zshrc.zsh-template' to '~/.zshrc'..."
+./copy-zshrc.sh
 info 'Done.'
+
