@@ -2,12 +2,14 @@
 # $1: option - formula or cask
 # $2: package name
 
+formula | bash
 formula | cmake
 formula | curl
 formula | fzf
 formula | gettext
 formula | git
 formula | jq
+formula | neovim
 formula | ninja
 formula | ripgrep
 formula | tldr
@@ -15,6 +17,8 @@ formula | tmux
 formula | zoxide
 formula | zsh
 
+cask | alacritty
 cask | keka
 cask | kekaexternalhelper
 cask | rectangle
+

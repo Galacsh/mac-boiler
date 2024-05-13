@@ -39,3 +39,4 @@ while IFS='|' read -r opt pkg_name; do
       xargs brew install
   fi
 done < <(valid_lines_of packages.txt)
+
