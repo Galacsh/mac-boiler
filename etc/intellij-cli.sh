@@ -7,6 +7,10 @@ source ../utils.sh
 
 # ===============================================
 
+if ! exists /usr/local/bin; then
+  sudo mkdir -p /usr/local/bin
+fi
+
 if exists /usr/local/bin/idea; then
   log "'IntelliJ IDEA CLI' is already enabled."
   exit
