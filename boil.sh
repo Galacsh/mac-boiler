@@ -22,5 +22,5 @@ init zsh
 init launch-agent
 init languages
 init self-install
-init git-install
 init etc
+
