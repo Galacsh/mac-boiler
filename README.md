@@ -9,7 +9,7 @@ xcode-select --install
 2. Clone this repository.
 
 ```shell
-git clone https://github.com/galacsh/mac-boiler
+git clone https://github.com/galacsh/mac-boiler.git
 cd mac-boiler/ || exit
 ```
 
