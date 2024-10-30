@@ -15,8 +15,8 @@ info "Installing 'go'..."
 ./go.sh || exit
 info 'Done.'
 
-info "Installing 'nvm'..."
-./nvm.sh || exit
+info "Installing 'pnpm'..."
+./pnpm.sh || exit
 info 'Done.'
 
 info "Installing 'sdkman'..."
