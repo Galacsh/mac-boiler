@@ -12,6 +12,6 @@ read -r -p "Git user email: " user_email
 
 git config --global user.name "${user_name}"
 git config --global user.email "${user_email}"
-git config --global core.editor "nvim"
+git config --global core.editor "vim"
 git config --global init.defaultBranch "main"
 git config --global credential.helper "osxkeychain"
