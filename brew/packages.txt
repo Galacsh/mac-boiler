@@ -9,7 +9,6 @@ formula | fzf
 formula | gettext
 formula | git
 formula | jq
-formula | neovim
 formula | ninja
 formula | ripgrep
 formula | tldr
@@ -21,4 +20,3 @@ cask | alacritty
 cask | keka
 cask | kekaexternalhelper
 cask | rectangle
-
