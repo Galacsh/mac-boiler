@@ -15,6 +15,10 @@ info "Installing plugins..."
 ./install-external-plugins.sh
 info 'Done.'
 
+info "Installing custom themes..."
+./install-custom-themes.sh
+info 'Done.'
+
 info "Copying 'zshrc.zsh-template' to '~/.zshrc'..."
 ./copy-zshrc.sh
 info 'Done.'

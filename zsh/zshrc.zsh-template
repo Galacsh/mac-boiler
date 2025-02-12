@@ -4,7 +4,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # See: https://github.com/ohmyzsh/ohmyzsh/wiki/Settings
 # =====================================================
 
-ZSH_THEME='agnoster'
+ZSH_THEME='pretty-robbyrussell'
 
 # Update automatically without asking.
 zstyle ':omz:update' mode auto
