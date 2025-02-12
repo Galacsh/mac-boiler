@@ -54,7 +54,7 @@ prompt_git() {
     if [[ -n "$dirty" ]]; then
       branch_color="%{$fg[yellow]%}"
     fi
-    echo -n "${branch_color}${${ref:gs/%/%%}/refs\/heads\//$PL_BRANCH_CHAR }%{$fg[magenta]%}${vcs_info_msg_0_%% }${mode} "
+    echo -n "${branch_color}${${ref:gs/%/%%}/refs\/heads\//$PL_BRANCH_CHAR }%{$fg[magenta]%}${vcs_info_msg_0_%% }${mode}%{$reset_color%} "
   fi
 }
 
